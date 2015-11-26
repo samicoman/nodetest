@@ -12,7 +12,7 @@ const alertAsyncMessage = function() {
 }
 
 console.log(`
-  asset references like this one:
+  asset references like this one2:
     images/gulp.png
   get updated in js too!`)
 
