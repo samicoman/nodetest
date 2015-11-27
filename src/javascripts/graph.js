@@ -25,26 +25,14 @@ d3.json(jsonDataPath, function(error, root) {
   if (error) throw error;
 
   var path = svg.datum(root).selectAll("path")
-      .data(partition.nodes)
+      .data(partition.value(function(d){return d.size;}).nodes)
     .enter().append("path")
       .attr("display", function(d) { return d.depth ? null : "none"; }) // hide inner ring
       .attr("d", arc)
       .style("stroke", "#fff")
-      .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+      .style("fill", function(d) { return d.color })
       .style("fill-rule", "evenodd")
       .each(stash);
-
-  d3.selectAll("input").on("change", function change() {
-    var value = this.value === "count"
-        ? function() { return 1; }
-        : function(d) { return d.size; };
-
-    path
-        .data(partition.value(value).nodes)
-      .transition()
-        .duration(1500)
-        .attrTween("d", arcTween);
-  });
 });
 
 // Stash the old values for transition.

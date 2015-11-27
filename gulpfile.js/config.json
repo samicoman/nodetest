@@ -40,6 +40,7 @@
       "dest": "./",
       "dataFile": "data/global.json",
       "twitterFile": "data/twitter.json",
+      "graphFile": "data/graph.json",
       "htmlmin": {
         "collapseWhitespace": true
       },

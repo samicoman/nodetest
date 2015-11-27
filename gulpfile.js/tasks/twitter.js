@@ -21,10 +21,20 @@ var getFollowers = function(){
 	};
 
 	connection.get('/followers/list.json', params, function (err, response) {
-		//response = {'profiles': [{ 'name': '1'},{'name': '2'}]};
-		//console.log(response);
-
 		var dataPath = path.resolve(config.root.src, config.tasks.html.src, config.tasks.html.twitterFile)
+		var graphPath = path.resolve(config.root.src, config.tasks.html.src, config.tasks.html.graphFile)
+
+		var graphData = {
+			"name": "graphData",
+			"children": []
+		};
+
+		for (var i = 0; i < response.users.length; i++) {
+			graphData.children.push({"name": response.users[i].name, "size": response.users[i].followers_count, "color": "#"+response.users[i].profile_background_color});
+		};
+
+		fs.unlink(graphPath);
+		fs.writeFile(graphPath, JSON.stringify(graphData));
 
 		fs.unlink(dataPath);
 		fs.writeFile(dataPath, JSON.stringify(response));
