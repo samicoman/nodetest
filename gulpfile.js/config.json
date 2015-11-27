@@ -17,7 +17,8 @@
       "extractSharedJs": true,
       "entries": {
         "app": ["./app.js"],
-        "page": ["./page.js"]
+        "page": ["./page.js"],
+        "graph": ["./graph.js"]
       },
       "extensions": ["js"]
     },
@@ -56,6 +57,12 @@
       "src": "fonts",
       "dest": "fonts",
       "extensions": ["woff2", "woff", "eot", "ttf", "svg"]
+    },
+
+    "jsons": {
+      "src": "html/data",
+      "dest": "jsons",
+      "extensions": ["json"]
     },
 
     "iconFont": {

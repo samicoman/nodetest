@@ -1,0 +1,18 @@
+{% extends 'layouts/application.html' %}
+{% block content %}
+<form>
+  <label><input type="radio" name="mode" value="size"> Size</label>
+  <label><input type="radio" name="mode" value="count" checked> Count</label>
+</form>
+<div id="container">
+</div>
+
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+	var jsonDataPath = "/jsons/flare.json";
+	var container = "#container";
+</script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="javascripts/graph.js"></script>
+{% endblock %}
