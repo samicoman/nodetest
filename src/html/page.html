@@ -1,9 +1,18 @@
 {% extends 'layouts/application.html' %}
-
 {% block content %}
-  I am page 2, and have different javascript.
+	<img src="images/gulp.png" alt="gulp.js">
+	{% for profile in users %}
+		<div class="tw-profile">
+			<img src="{{ profile.profile_image_url }}" />
+			<div class="tw-profile-information">
+				<h2>{{ profile.name }}</h2>
+				<h3>@{{ profile.screen_name }}</h3>
+				<p>{{ profile.description }}</p>
+				<p>Find out more <a href="{{ profile.url }}">here</a></p>
+			</div>
+		</div>
+	{% endfor %}
 {% endblock %}
-
 {% block javascript %}
 <script src="javascripts/page.js"></script>
 {% endblock %}

@@ -38,6 +38,7 @@
       "src": "html",
       "dest": "./",
       "dataFile": "data/global.json",
+      "twitterFile": "data/twitter.json",
       "htmlmin": {
         "collapseWhitespace": true
       },

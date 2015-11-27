@@ -10,6 +10,7 @@ var htmlmin      = require('gulp-htmlmin')
 var path         = require('path')
 var render       = require('gulp-nunjucks-render')
 var fs           = require('fs')
+var merge       = require('merge')
 
 var exclude = path.normalize('!**/{' + config.tasks.html.excludeFolders.join(',') + '}/**')
 
@@ -20,7 +21,16 @@ var paths = {
 
 var getData = function(file) {
   var dataPath = path.resolve(config.root.src, config.tasks.html.src, config.tasks.html.dataFile)
-  return JSON.parse(fs.readFileSync(dataPath, 'utf8'))
+  var twitterPath = path.resolve(config.root.src, config.tasks.html.src, config.tasks.html.twitterFile)
+  data1 = JSON.parse(fs.readFileSync(dataPath, 'utf8'))
+  data2 = JSON.parse(fs.readFileSync(twitterPath, 'utf8'))
+
+  // console.log("======1======");
+  // console.log(data1);
+  // console.log("======2======");
+  // console.log(data2);
+
+  return merge(data1, data2);
 }
 
 var htmlTask = function() {
